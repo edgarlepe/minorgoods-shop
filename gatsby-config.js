@@ -1,3 +1,7 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -15,6 +19,12 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-source-magento2`,
+      options: {
+        graphqlEndpoint: process.env.GRAPHQL_ENDPOINT,
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
